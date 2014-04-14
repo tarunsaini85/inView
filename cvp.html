@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+</head>
+
+<body>
+<div style="height:800px"></div>
+<span id="vpE">I'm in</span>
+<div style="height:800px"></div>
+
+<script type="text/javascript">
+$.fn.inView = function(){
+    var win = $(window);
+    obj = $(this);
+    var scrollPosition = win.scrollTop();
+    var visibleArea = win.scrollTop() + win.height();
+    var objEndPos = (obj.offset().top + obj.outerHeight());
+    return(visibleArea >= objEndPos && scrollPosition <= objEndPos ? true : false)
+};
+
+
+$(window).scroll(function(){
+    if($("#vpE").inView()){
+		$('body').css('background-color','#c8ffb2')
+	}
+	else{
+		$('body').css('background-color','#ffc4c4')
+	}
+});
+</script>
+</body>
+</html>
