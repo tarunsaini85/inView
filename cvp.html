@@ -12,13 +12,19 @@
 <div style="height:800px"></div>
 
 <script type="text/javascript">
-$.fn.inView = function(){
-    var win = $(window);
-    obj = $(this);
-    var scrollPosition = win.scrollTop();
-    var visibleArea = win.scrollTop() + win.height();
-    var objEndPos = (obj.offset().top + obj.outerHeight());
-    return(visibleArea >= objEndPos && scrollPosition <= objEndPos ? true : false)
+$.fn.inView = function(options){
+	var topOff = bottomOff = 0,
+		win = $(window),
+    	obj = $(this),
+    	scrollPosition = win.scrollTop(),
+    	visibleArea = win.scrollTop() + win.height(),
+    	objEndPos = (obj.offset().top + obj.outerHeight());
+	if(options){
+		topOff = options.topOff || 0;
+		bottomOff = options.bottomOff || 0;
+	}
+	console.log(topOff+' - '+bottomOff);
+    return(visibleArea >= objEndPos-topOff && scrollPosition <= objEndPos+bottomOff ? true : false)
 };
 
 
