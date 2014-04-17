@@ -23,7 +23,6 @@ $.fn.inView = function(options){
 		topOff = options.topOff || 0;
 		bottomOff = options.bottomOff || 0;
 	}
-	console.log(topOff+' - '+bottomOff);
     return(visibleArea >= objEndPos-topOff && scrollPosition <= objEndPos+bottomOff ? true : false)
 };
 
